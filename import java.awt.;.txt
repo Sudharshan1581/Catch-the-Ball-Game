@@ -1,0 +1,61 @@
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
+
+class BallGame extends Frame implements MouseMotionListener
+{
+    int circleX = 250;
+    int circleY = 250;                                      // Setting Properties
+    int circleRad = 15;
+
+    BallGame()
+    {
+        addMouseMotionListener(this);
+
+        setSize(500, 500);
+        setLayout(null);
+        setTitle("Catch the Ball");
+        setVisible(true);
+    }
+
+    public void paint(Graphics g)
+    {
+        super.paint(g);
+        g.setColor(Color.RED);                                       // Coloring the Ball
+        g.fillOval(circleX, circleY, 2*circleRad, 2*circleRad);
+    }
+
+    public void mouseDragged(MouseEvent e)
+    {
+
+    }
+
+    public void mouseMoved(MouseEvent e)
+    {
+        int x = e.getX();
+        int y = e.getY();
+
+        if(x < circleX+circleRad)          // Game Physics
+        {
+            circleX++;
+        }
+        if(x > circleX+circleRad)
+        {
+            circleX--;
+        }
+        if(y < circleY+circleRad)
+        {
+            circleY++;
+        }
+        if(y > circleY+circleRad)
+        {
+            circleY--;
+        }
+        repaint();
+    }
+
+    public static void main(String[] args)
+    {
+        new BallGame();
+    }
+}

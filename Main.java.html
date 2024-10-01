@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>Main.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #0033b3;}
+.s1 { color: #080808;}
+.s2 { color: #1750eb;}
+.s3 { color: #8c8c8c; font-style: italic;}
+.s4 { color: #067d17;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Main.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">java.awt.*;</span>
+<span class="s0">import </span><span class="s1">java.awt.event.MouseEvent;</span>
+<span class="s0">import </span><span class="s1">java.awt.event.MouseListener;</span>
+<span class="s0">import </span><span class="s1">java.awt.event.MouseMotionListener;</span>
+
+<span class="s0">class </span><span class="s1">BallGame </span><span class="s0">extends </span><span class="s1">Frame </span><span class="s0">implements </span><span class="s1">MouseMotionListener</span>
+<span class="s1">{</span>
+    <span class="s0">int </span><span class="s1">circleX = </span><span class="s2">250</span><span class="s1">;</span>
+    <span class="s0">int </span><span class="s1">circleY = </span><span class="s2">250</span><span class="s1">;                                      </span><span class="s3">// Setting Properties</span>
+    <span class="s0">int </span><span class="s1">circleRad = </span><span class="s2">20</span><span class="s1">;</span>
+
+    <span class="s1">BallGame()</span>
+    <span class="s1">{</span>
+        <span class="s1">addMouseMotionListener(</span><span class="s0">this</span><span class="s1">);</span>
+
+        <span class="s1">setSize(</span><span class="s2">500</span><span class="s1">, </span><span class="s2">500</span><span class="s1">);</span>
+        <span class="s1">setLayout(</span><span class="s0">null</span><span class="s1">);</span>
+        <span class="s1">setTitle(</span><span class="s4">&quot;Catch the Ball&quot;</span><span class="s1">);</span>
+        <span class="s1">setVisible(</span><span class="s0">true</span><span class="s1">);</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">paint(Graphics g)</span>
+    <span class="s1">{</span>
+         <span class="s0">super</span><span class="s1">.paint(g);</span>
+         <span class="s1">g.setColor(Color.RED);                                       </span><span class="s3">// Coloring the Ball</span>
+         <span class="s1">g.fillOval(circleX, circleY, </span><span class="s2">2</span><span class="s1">*circleRad, </span><span class="s2">2</span><span class="s1">*circleRad);</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">mouseDragged(MouseEvent e)</span>
+    <span class="s1">{</span>
+
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">mouseMoved(MouseEvent e)</span>
+    <span class="s1">{</span>
+        <span class="s0">int </span><span class="s1">x = e.getX();</span>
+        <span class="s0">int </span><span class="s1">y = e.getY();</span>
+
+        <span class="s0">if</span><span class="s1">(x &lt; circleX+circleRad)          </span><span class="s3">// Game Physics</span>
+        <span class="s1">{</span>
+            <span class="s1">circleX++;</span>
+        <span class="s1">}</span>
+        <span class="s0">if</span><span class="s1">(x &gt; circleX+circleRad)</span>
+        <span class="s1">{</span>
+            <span class="s1">circleX--;</span>
+        <span class="s1">}</span>
+        <span class="s0">if</span><span class="s1">(y &lt; circleY+circleRad)</span>
+        <span class="s1">{</span>
+            <span class="s1">circleY++;</span>
+        <span class="s1">}</span>
+        <span class="s0">if</span><span class="s1">(y &gt; circleY+circleRad)</span>
+        <span class="s1">{</span>
+            <span class="s1">circleY--;</span>
+        <span class="s1">}</span>
+        <span class="s1">repaint();</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public static void </span><span class="s1">main(String[] args)</span>
+    <span class="s1">{</span>
+       <span class="s0">new </span><span class="s1">BallGame();</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>
